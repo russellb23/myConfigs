@@ -1,0 +1,188 @@
+# Conky configuration
+# by Wes Brewer zer0
+
+# set to yes if you want Conky to be forked in the background
+background yes
+
+# Use Xft?
+use_xft yes
+
+# Xft font when Xft is enabled
+xftfont Bitstream Vera Sans Mono:size=8
+
+# Text alpha when using Xft
+xftalpha 0.8
+
+# Update interval in seconds
+update_interval 1.0
+
+# This is the number of times Conky will update before quitting.
+# Set to zero to run forever.
+total_run_times 0
+
+# Create own window instead of using desktop (required in nautilus)
+own_window no
+
+# If own_window is yes, you may use type normal, desktop or override
+own_window_type normal
+
+# Use pseudo transparency with own_window?
+own_window_transparent yes
+
+# If own_window_transparent is set to no, you can set the background colour here
+own_window_colour black
+
+# If own_window is yes, these window manager hints may be used
+#own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+# Use double buffering (reduces flicker, may not work for everyone)
+double_buffer yes
+
+# Set maximum width of conky. Height depends on the no of elements
+maximum_width 290
+
+# Minimum size of text area
+minimum_size 210 5
+
+# Draw shades?
+draw_shades yes
+
+# Draw outlines?
+draw_outline no
+
+# Draw borders around graphs
+draw_graph_borders no
+
+# Draw borders around text
+draw_borders no
+
+# Stippled borders?
+stippled_borders 8
+
+# border margins
+#border_margin 4
+
+# border width
+border_width 1
+
+# Default colors and also border colors
+default_color white
+default_shade_color black
+default_outline_color black
+
+# Text alignment, other possible values are commented
+alignment top_left
+#alignment top_right
+#alignment bottom_left
+#alignment bottom_right
+#alignment none
+
+# Gap between borders of screen and text
+# same thing as passing -x at command line
+gap_x 10
+gap_y 10
+
+# Subtract file system buffers from used memory?
+no_buffers yes
+
+# set to yes if you want all text to be in uppercase
+uppercase no
+
+# number of cpu samples to average
+# set to 1 to disable averaging
+cpu_avg_samples 2
+
+# number of net samples to average
+# set to 1 to disable averaging
+net_avg_samples 2
+
+# Force UTF8? note that UTF8 support required XFT
+# Fixes degree symbol ° display issues
+override_utf8_locale yes
+
+# Add spaces to keep things from moving about?  This only affects certain objects.
+use_spacer none
+
+###################### Configure Colours ##########################
+# Main headers
+color0 90ACDF
+# Standard text
+color1 white
+# Sub headers
+color2 90ACDF
+# 1st place TOP text
+color3 E1F0FF
+# Bars
+color4 lightgrey
+# Clock
+color5 lightgrey
+
+## Original Colour Key - http://www.visibone.com/colorlab/big.html ##
+# Main headers = FF9933 (light hard orange)
+# Standard text = white
+# TOP headers = orange
+# 1st place TOP text = FFFFCC (pale weak yellow)
+# Bars = lightgrey
+# Clock = lightgrey
+# CPU1 = 3399FF (light hard azure)
+# CPU2 = 9933FF (light hard violet)
+# Download = green
+# Upload = red
+# Graph gradient = 000000 (black)
+
+##################### TEXT - screen output ########################
+TEXT
+$color0 DATE & TIME $hr $color1 ${voffset 3}
+${alignc}${font :size=23}${time %H:%M:%S} $font
+${alignc}${font :size=14}${time %a, %b %d %Y} $font$color
+
+$color0 SYSTEM $hr $color1 ${voffset 3}
+ operator @ Space: ${alignr}${execi 3600 whoami} @ $nodename
+ Kernel: ${alignr} $kernel 
+ Up-time: ${alignr} $uptime
+
+$color0 CPU $hr $color1 ${voffset 3}
+ CPU Usage: $cpu% ${offset 20} $alignr $freq_g GHz
+ ${freq 1} MHz @ ${exec sensors | grep 'Core 0' | awk '{print $3}'} ${alignr}${freq 2} MHz @ ${exec sensors | grep 'Core 1' | awk '{print $3}'}
+ ${color 90ACDF}${cpugraph cpu1 25,131 35486c 90ACDF -l} ${alignr}${color 90ACDF}${cpugraph cpu2 25,131 35486c 90ACDF -l}
+ ${color 90ACDF}${cpugraph cpu3 25,131 35486c 90ACDF -l} ${alignr}${color 90ACDF}${cpugraph cpu4 25,131 35486c 90ACDF -l}
+
+$color2$alignc NAME                PID    CPU%   MEM%
+$color3$alignc ${top name 1} ${top pid 1} ${top cpu 1} ${top mem 1}$color1
+$alignc ${top name 2} ${top pid 2} ${top cpu 2} ${top mem 2}
+$alignc ${top name 3} ${top pid 3} ${top cpu 3} ${top mem 3}
+$alignc ${top name 4} ${top pid 4} ${top cpu 4} ${top mem 4}
+$alignc ${top name 5} ${top pid 5} ${top cpu 1} ${top mem 5}
+$alignc ${top name 6} ${top pid 6} ${top cpu 2} ${top mem 6}
+$alignc ${top name 7} ${top pid 7} ${top cpu 3} ${top mem 7}
+
+$color0 RAM $hr $color1 ${voffset 3}
+ RAM:  $mem/$memmax $alignr$color4$memperc% ${membar 6,90}$color1
+ Swap: $swap/$swapmax $alignr$color4$swapperc% ${swapbar 6,90}$color1
+
+$color2$alignc NAME                PID    CPU%   MEM%
+$color3$alignc ${top_mem name 1} ${top_mem pid 1} ${top_mem cpu 1} ${top_mem mem 1}$color1
+$alignc ${top_mem name 2} ${top_mem pid 2} ${top_mem cpu 2} ${top_mem mem 2}
+$alignc ${top_mem name 3} ${top_mem pid 3} ${top_mem cpu 3} ${top_mem mem 3}
+$alignc ${top_mem name 4} ${top_mem pid 4} ${top_mem cpu 4} ${top_mem mem 4}
+$alignc ${top_mem name 5} ${top_mem pid 5} ${top_mem cpu 1} ${top_mem mem 5}
+$alignc ${top_mem name 6} ${top_mem pid 6} ${top_mem cpu 2} ${top_mem mem 6}
+
+$color0 HDD $hr $color1 ${voffset 3}
+ Boot: ${fs_used /boot}/${fs_size /boot} $alignr$color4${fs_free_perc /boot}% ${fs_bar 6,90 /boot}$color1
+ Root: ${fs_used /}/${fs_size /} $alignr$color4${fs_free_perc /}% ${fs_bar 6,90 /}$color1
+ Home: ${fs_used /home}/${fs_size /home} $alignr$color4${fs_free_perc /home}% ${fs_bar 6,90 /home}$color1
+
+ Read:${color green} ${diskio_read /dev/sda} ${alignr}$color1 Write:${color red} ${diskio_write /dev/sda}
+ $color1${diskiograph_read /dev/sda 25,131 35486c 00CC00 430 -l} ${alignr}${diskiograph_write /dev/sda 25,131 35486c CC0000 430 -l} 
+
+$color0 NETWORK $hr $color1 ${voffset 3}
+ Ethernet: ${addr eth0}
+ Down:${color green} ${downspeed eth0}/s ${offset 40}$color1 Up:${color red} ${upspeed eth0}/s
+ $color1${downspeedgraph eth0 25,131 35486c 00CC00 430 -l} ${alignr}${upspeedgraph eth0 25,131 35486c CC0000 85 -l}
+ WiFi: ${addr wlp3s0}
+ Down:${color green} ${downspeed wlp3s0}/s ${offset 40}$color1 Up:${color red} ${upspeed wlp3s0}/s
+ $color1${downspeedgraph wlp3s0 25,131 35486c 00CC00 430 -l} ${alignr}${upspeedgraph wlp3s0 25,131 35486c CC0000 85 -l}
+
+$color0 BATTERY $hr $color1 ${voffset 3}
+ Status: ${battery_short BAT0} $color4${battery_bar BAT0 8,180}$color1
