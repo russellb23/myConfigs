@@ -1,0 +1,128 @@
+[global_config]
+  borderless = True
+  extra_styling = False
+  scroll_tabbar = True
+  suppress_multiple_term_dialog = True
+  tab_position = bottom
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child0]]]
+      fullscreen = False
+      last_active_term = a11c962d-1423-4aba-94b9-d9130eb7f1ec
+      last_active_window = False
+      maximised = False
+      order = 0
+      parent = ""
+      position = 0:0
+      size = 1599, 899
+      title = russellb@eigen: ~
+      type = Window
+    [[[child1]]]
+      order = 0
+      parent = child0
+      position = 800
+      ratio = 0.500312695435
+      type = HPaned
+    [[[child4]]]
+      fullscreen = False
+      last_active_term = 8b67f94e-3dbe-46cd-b9ca-90c85f94ed4a
+      last_active_window = True
+      maximised = False
+      order = 0
+      parent = ""
+      position = 0:0
+      size = 1599, 899
+      title = russellb@eigen: ~
+      type = Window
+    [[[terminal2]]]
+      order = 0
+      parent = child1
+      profile = default
+      type = Terminal
+      uuid = a11c962d-1423-4aba-94b9-d9130eb7f1ec
+    [[[terminal3]]]
+      order = 1
+      parent = child1
+      profile = default
+      type = Terminal
+      uuid = 8b67f94e-3dbe-46cd-b9ca-90c85f94ed4a
+    [[[terminal5]]]
+      order = 0
+      parent = child4
+      profile = default
+      type = Terminal
+      uuid = 8b67f94e-3dbe-46cd-b9ca-90c85f94ed4a
+  [[New Layout]]
+    [[[child0]]]
+      fullscreen = False
+      last_active_term = 392f433c-cb0c-4a78-bd0d-87786f6631e2
+      last_active_window = True
+      maximised = False
+      order = 0
+      parent = ""
+      position = 0:0
+      size = 1599, 899
+      title = russellb@eigen: ~
+      type = Window
+    [[[child1]]]
+      order = 0
+      parent = child0
+      position = 800
+      ratio = 0.500312695435
+      type = HPaned
+    [[[child2]]]
+      order = 0
+      parent = child1
+      position = 450
+      ratio = 0.5
+      type = VPaned
+    [[[child4]]]
+      order = 1
+      parent = child2
+      position = 400
+      ratio = 0.5
+      type = HPaned
+    [[[terminal3]]]
+      order = 0
+      parent = child2
+      profile = default
+      type = Terminal
+      uuid = a11c962d-1423-4aba-94b9-d9130eb7f1ec
+    [[[terminal5]]]
+      order = 0
+      parent = child4
+      profile = default
+      type = Terminal
+      uuid = 7d951392-30a2-4248-911e-23f0d8f0d9b2
+    [[[terminal6]]]
+      order = 1
+      parent = child4
+      profile = default
+      type = Terminal
+      uuid = 392f433c-cb0c-4a78-bd0d-87786f6631e2
+    [[[terminal7]]]
+      order = 1
+      parent = child1
+      profile = default
+      type = Terminal
+      uuid = 8b67f94e-3dbe-46cd-b9ca-90c85f94ed4a
+[plugins]
+[profiles]
+  [[default]]
+    allow_bold = False
+    background_darkness = 0.77
+    background_type = transparent
+    cursor_color = "#ca00fc"
+    cursor_color_fg = False
+    custom_command = pwd
+    font = DejaVu Sans Mono 9
+    icon_bell = False
+    palette = "#000000:#aa0000:#00aa00:#aa5500:#0000aa:#aa00aa:#00aaaa:#aaaaaa:#555555:#ff5555:#55ff55:#ffff55:#5555ff:#ff55ff:#55ffff:#ffffff"
+    scrollback_infinite = True
+    scrollbar_position = hidden
+    show_titlebar = False
+    use_system_font = False
+    visible_bell = True
+  [[New Profile]]
+    cursor_color = "#aaaaaa"

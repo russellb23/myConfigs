@@ -1,0 +1,149 @@
+set nocompatible                        "required
+filetype off                            "required
+set splitbelow
+set splitright
+set hlsearch
+set incsearch
+set showmatch
+set nu
+set background=dark
+syntax enable
+set showmatch 
+
+
+let python_highlight_all=1
+
+filetype plugin indent on 
+let g:SimplyFold_docstring_preview=1
+
+" autocomplete 
+let g:ycm_autoclose_preview_window_after_completion=1
+
+
+" Path to virtual environments
+"let g:virtualenv_directory = '/home/russellb/russell/Python/playGround/:/home/russellb/russell/Python/Audio/playAudio/:/home/russellb/russell/VueJS/flaskvue/backend/flaskenv'
+
+let g:virtualenv_directory = '/home/russellb/russell/Python/Audio/playAudio/'
+
+
+" Split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" Open NERDTree
+map <C-n> :NERDTreeToggle<CR>
+" Close vim if the only window open is NERDTree
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabFree()) | q |endif
+" Open NERDTree when no files are specified during vim startup
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" NERDTree 
+map <leader>nn :NERDTreeToggle<CR>
+map <leader>nb :NERDTreeFromBookmark<CR>
+map <leader>nf :NERDTreeFind<CR>
+
+
+" PEP 8 indentation for python
+au BufNewFile,BufRead *.py, *.pyw, *.c, *.h
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set textwidth=79
+    \ set expandtab
+    \ set autoindent
+    \ set fileformat=unix
+
+" Full stack indentation definition
+au BufNewFile,BufRead *.js, *.html, *.css
+    \ set tabstop=2
+    \ set softtabstop=2
+    \ set shiftwidth=2
+
+" Class outline viewer tagbar
+nmap <F8> :TagbarToggle<CR>
+
+
+" Flag unnecessary whitespace
+" au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+" hightlight BadWhitespace ctermbg=red
+
+" Display tabs at the beginning of a line in Python mode as bad.
+"au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
+
+" Make trailing whitespace be flagged as bad.
+"au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+" Wrap text after a certain number of characters
+au BufRead,BufNewFile *.py, *.pyw, set textwidth=79
+
+
+" UTF support
+set encoding=utf-8
+
+
+" Set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" Alternatively, pass a path where vundle can install plugins
+" call vundle#begin(~/some/path/here)
+
+" Let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" add all your plugins here (note older versions of Vundle used Bundle instead of plugin)
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'majutsushi/tagbar'
+Plugin 'bling/vim-airline'
+Plugin 'honza/vim-snippets'
+Plugin 'kien/ctrlp.vim'
+Plugin 'nvie/vim-flake8'
+Plugin 'Yggdroot/indentLine'
+Plugin 'tpope/vim-surround'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'axiaoxin/favorite-vim-colorscheme'
+Plugin 'moll/vim-node'
+if has('python')
+    Plugin 'davidhalter/jedi-vim'
+    Plugin 'axiaoxin/vim-json-line-format'
+    Plugin 'Sirver/ultisnips'
+endif
+Plugin 'walm/jshint.vim'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'gko/vim-coloresque'
+Plugin 'kabbamine/vcoolor.vim'
+Plugin 'mattn/emmet-vim'
+"Plugin 'yuttie/comfortable-motion-vim'
+Bundle 'lepture/vim-jinja'
+"Plugin 'Vimjas/vim-python-pep8-indent'
+Plugin 'plytophogy/vim-virtualenv'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'w0rp/ale'
+Plugin 'itchyny/lightline.vim'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'tomasr/molokai'
+Plugin 'jeetsukumaran/vim-pythonsense'
+
+
+
+" All the plugins must be added before the following line
+call vundle#end()                       " required
+filetype plugin indent on               " required
+
+
+set runtimepath+=~/.vim_runtime
+
+source ~/.vim_runtime/vimrcs/basic.vim
+source ~/.vim_runtime/vimrcs/filetypes.vim
+source ~/.vim_runtime/vimrcs/plugins_config.vim
+source ~/.vim_runtime/vimrcs/extended.vim
+
+try
+source ~/.vim_runtime/my_configs.vim
+catch
+endtry
