@@ -1,0 +1,11 @@
+# Pluggable devices are handled by uDev, they are not in fstab
+UUID=4ba76677-f1e4-4434-9f68-d5399399d100 / ext4 defaults,relatime 0 1
+# Added by make-fstab /dev/cdrom
+/dev/cdrom                                /media/cdrom                          iso9660   noauto,exec,users,ro    0 0
+# Added by make-fstab /dev/sr0
+/dev/sr0                                  /media/sr0                            auto      noauto,exec,users,ro    0 0
+# Mounting home partition
+/dev/sda4				  /home				  	ext4	  rw,async,exec,users	  0 0
+# Mounting swap partition
+/dev/sda3				  none					swap	  sw			  0 0
+#UUID=36eada2f-e670-481b-b175-13b13da1be2e  none					swap	  sw			  0 0
