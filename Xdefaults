@@ -1,0 +1,92 @@
+URxvt.font: xft:terminus:size=09:antialias=true
+URxvt.scrollBar: false
+URxvt.scrollBar_right: false
+URxvt.scrollBar_floating: false
+URxvt.scrollstyle: rxvt
+
+!-*- Perl extensions -*-
+URxvt.perl-ext-common: default,selection-to-clipboard,matcher,tabbed
+URxvt.keysym.M-u:     perl:url-select:select_next
+URxvt.url-launcher:   /usr/bin/firefox
+URxvt.underlineURLs:  True
+URxvt.matcher.button: 1 
+URxvt.keysym.M-Escape:perl:keyboard-select:activate
+! Comment this if you dont want copy when text is selected
+URxvt.clipboard.autocopy: true
+
+! Colour schemes
+*background: #0f0f0f
+*foreground: #c8c8c8
+
+!black
+*color0:  #251f1f
+*color8:  #5e5e5e
+!red
+*color1:  #eb4509
+*color9:  #eb4509
+!green
+*color2:  #94e76b
+*color10: #95e76b
+!yellow
+*color3:  #ffac18
+*color11: #ffac18
+!blue
+*color4:  #46aede
+*color12: #46aede
+!magenta
+*color5:  #e32c57
+*color13: #e32c57
+!cyan
+*color6:  #d6dbac
+*color14: #d6dbac
+!white
+*color7:  #efefef
+*color15: #efefef
+
+! du | xdu
+xdu*foreground:      gray
+xdu*background:      black
+xdu*window.width:    1600
+xdu*window.height:   900
+xdu.ncol:            4
+xdu.font:            -*-terminal-*-r-normal--10-*
+xdu.showsize:        False
+xdu.order:           size
+xdu*help*foreground: green
+xdu*help*background: red4
+xdu*help*font:       -*-terminal-*-r-normal--10-*
+
+! xpdf
+xpdf.initalZoom:    width
+xpdf.reverseVideo:  true
+xpdf.toolTipEnable: false
+
+! xterm
+!xterm*autoWrap:        true
+!xterm*faceName:        xft:bitstream vera sans mono:size=15:antialias=true
+!xterm*metaSendsEscape: true
+
+!! xterm colors
+! normal
+!xterm*color0:  #000000
+!xterm*color1:  #B40000
+!xterm*color2:  #00AA00
+!xterm*color3:  #AAAA00
+!xterm*color4:  #5555AA
+!xterm*color5:  #CC00CC
+!xterm*color6:  #00AAAA
+!xterm*color7:  #AAAAAA
+! bright (bold)
+!xterm*color8:  #555555
+!xterm*color9:  #FFF000
+!xterm*color10: #00DD00
+!xterm*color11: #FFFF00
+!xterm*color12: #6464FF
+!xterm*color13: #FF00FF
+!xterm*color14: #00EEEE
+!xterm*color15: #DDDDDD
+! misc
+!xterm*foreground:  #00AA00
+!xterm*background:  #000000
+!xterm*cursorColor: #00AA00
+
